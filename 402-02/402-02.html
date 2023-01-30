@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="text-align: center;">
+        <h1 style="color: green;">Geekster</h1>
+        <h4>Click on the button to add image element</h4>
+        <button onclick="func()">click here</button>
+        <div>
+            <h3 id="demo" style="color: green;"></h3>
+            <img id="image" src="">
+        </div>
+        <script>
+            function func(){
+                  document.getElementById("demo").innerHTML = "Image Element Added.";
+                  document.getElementById("image").src = "402-02IMG.JPG";
+            }
+        </script>
+  </body>
+</html>

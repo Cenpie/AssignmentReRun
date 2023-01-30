@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .parent{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .header{
+            text-align: center;
+        }
+        button{
+            background-color: orange;
+            border: none;
+            border-radius: 2px;
+            display: inline-block;
+            font-size: 16px;
+            margin-inline: 5px;
+            height: 25px;
+        }        
+        
+    </style>
+  </head>
+  <body style=" font-family: sans-serif;">
+    <div class="parent">
+        <div class="header">
+            <h1 style="color: orange;">World Countries Data</h1>
+            <h4>Currently, we have 250 countries</h4>
+        </div>
+        <div class="middle">
+            <button onclick="func1()">POPULATION</button>     
+            <button onclick="func2()">LANGUAGES</button>
+        </div>
+        <div>
+            <h4 id="pop"></h4>
+            <h4 id="lan"></h4>
+        </div>
+        <div class="image">
+            <div id = "popid">
+            <img id="popimg" src="">
+            </div>
+            <div id="lanid">
+                <img id="lanimage" src="">
+            </div>  
+        </div>
+    </div>
+    <script>
+        function func1(){
+        document.getElementById("lan").innerHTML = "";
+        document.getElementById("lanimage").src = "#";
+        document.getElementById("lanimage").height = "";
+        document.getElementById("lanimage").width = "";
+        document.getElementById("pop").innerHTML = "10 Most populated countries in the world";
+        document.getElementById("popimg").src ="/405-01/Pop.JPG";
+        document.getElementById("popimg").height = "500";
+        document.getElementById("popimg").width = "1300";
+        }
+        function func2(){
+            document.getElementById("pop").innerHTML = "";
+            document.getElementById("popimg").src = "#";
+            document.getElementById("popimg").height = "";
+            document.getElementById("popimg").width = "";
+            document.getElementById("lan").innerHTML = "10 Most spoken languages in the world";
+            document.getElementById("lanimage").src = "/405-01/Lang.JPG";
+            document.getElementById("lanimage").height = "500";
+            document.getElementById("lanimage").width = "1300";
+        }
+    </script>
+  </body>
+</html>

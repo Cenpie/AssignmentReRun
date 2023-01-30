@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url('/403-03/backimg.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .grid{
+            display: grid;
+            background-color: white;
+            color: maroon;
+            width: 300px;
+            height: 600px;
+            border-radius: 5px;
+            margin-top: 50px;
+            margin-left: 650px;
+            margin-right: 600px;
+            padding: 20px;
+        }
+        h3{
+            font-size: xx-large;
+        }
+        hr{
+            display: block;
+            margin-top: -50px;
+            width: 200px;
+            height: 0.01px;
+            border-style: inset;
+            border-width: 1px;
+        }
+        form{
+            margin-top: -50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #amt{
+            width: 50px;
+        }
+        #people{
+            width: 50px;
+        }
+        #calc{
+            height: 75px;
+            width: 250px;
+            margin-left: 20px;
+            margin-top: 20px ;
+            background-color: maroon;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+        }
+        #tips{
+            text-align: center;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+    }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <h3 style="text-align: center;">Charles' Tip Calculator</h3>
+        <hr>
+        <form name="myform" onsubmit="handleSubmit(event)" >
+            <div>
+                <p>
+                    How much was your bill?
+                </p>
+                $ <input type="number" id="amt" name="bill">
+            </div>
+           <div>
+            <p>
+                How was your service?
+            </p>
+            <select name="service">
+                <option>-- Choose an option --</option>
+                <option>30% - Outstanding</option>
+                <option>20% - Good</option>
+                <option>15% - It was okay</option>
+                <option>10% - Bad</option>
+                <option>05% - Terrible</option>
+            </select>
+           </div>
+           <div>
+                <p>
+                    How many people are sharing the bill?
+                </p>
+                <input type="number" id="people" name="people"> people
+           </div>
+           <div>
+                <button type="submit" id="calc">
+                    CALCULATE!
+                </button>
+           </div>
+            <div id="tips">
+                <p>
+                    TIP AMOUNT
+                </p>
+                <p id="tip">
+                    
+                </p>
+                <p>
+                    each
+                </p>
+           </div>
+        </form>
+    </div>
+    <script>
+        function handleSubmit(event){
+            event.preventDefault();
+            var bill = document.myform.bill.value;
+            var service = document.myform.service.value;
+            let result = service.slice(0, 2);
+            var people = document.myform.people.value;
+            var tip = (((bill*result)/100)/people);
+            document.getElementById("tip").innerHTML=`$${tip.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

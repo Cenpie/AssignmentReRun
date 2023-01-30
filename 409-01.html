@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      input:focus {
+        outline-color: red;
+      }
+
+      div {
+        border-radius: 5px;
+
+        padding: 5px;
+      }
+      form {
+        width: 500px;
+        position: absolute;
+        left: 30%;
+      }
+      h5 {
+        text-align: center;
+        color: #FFB100;
+        font-weight: bold;
+      }
+      button {
+        width: 80px;
+        background-color: black;
+        color: white;
+        padding: 10px 15px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      label{
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body style="font-family: sans-serif;">
+    <h1 style="text-align: center">Validating Web Forms</h1>
+    <form name="myform" method="post" onsubmit="handleSubmit(event)">
+      <div>
+        <label for="">First Name </label>
+        <input
+          id="fname"
+          type="text"
+          name="fname"
+          onchange="handleFName(event)"
+        /><br />
+        <h5 id="alert-fname"></h5>
+      </div>
+      <div>
+        <label for="">Last Name </label>
+        <input
+          id="lname"
+          type="text"
+          name="lname"
+          onchange="handleLName(event)"
+        /><br />
+        <h5 id="alert-lname"></h5>
+      </div>
+      <div>
+        <label for="">Email </label>
+        <input
+          id="mail"
+          type="text"
+          name="mail"
+          onchange="handleMail(event)"
+        /><br />
+        <h5 id="alert-mail"></h5>
+      </div>
+      <div>
+        <label for=""> Password </label>
+        <input
+          id="pwd"
+          type="password"
+          name="password"
+          onchange="handlePwd(event)"
+        /><br />
+        <h5 id="alert-pwd"></h5>
+      </div>
+      <div>
+        <label for=""> Telephone </label>
+        <input
+          id="tele"
+          type="text"
+          name="tele"
+          onchange="handleTele(event)"
+        /><br />
+        <h5 id="alert-tele"></h5>
+      </div>
+      <div>
+        <label for=""> Your bio </label>
+        <input
+          id="bio"
+          type="text"
+          name="bio"
+          onchange="handleBio(event)"
+        /><br />
+        <h5 id="alert-bio"></h5>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+      function handleFName(event) {
+        const value = event.target.value;
+        validateFName(value);
+      }
+      function handleLName(event) {
+        const value = event.target.value;
+        validateLName(value);
+      }
+      function handlePwd(event) {
+        const value = event.target.value;
+        validatePwd(value);
+      }
+      function handleMail(event) {
+        const value = event.target.value;
+        validateMail(value);
+      }
+      function handleTele(event) {
+        const value = event.target.value;
+        validateTele(value);
+      }
+      function handleBio(event) {
+        const value = event.target.value;
+        validateBio(value);
+      }
+      const validateFName = (value) => {
+        const fNameRegex = /^[a-z0-9]+$/;
+        if (!fNameRegex.test(value)) {
+          document.getElementById("alert-fname").innerHTML =
+            "First Name must be alphanumeric and contain 3-16 charecter";
+          document.getElementById("fname").style.outlineColor = "";
+          document.getElementById("fname").style.borderColor = "";
+          document.getElementById("fname").style.borderWidth = "";
+        } else if (value.length < 3 || value.length > 16) {
+          document.getElementById("alert-fname").innerHTML =
+            "First Name must be alphanumeric and contain 3-16 charecter";
+          document.getElementById("fname").style.outlineColor = "";
+          document.getElementById("fname").style.borderColor = "";
+          document.getElementById("fname").style.borderWidth = "";
+        } else {
+          document.getElementById("alert-fname").innerHTML = "";
+          document.getElementById("fname").style.outlineColor = "green";
+          document.getElementById("fname").style.borderColor = "green";
+          document.getElementById("fname").style.borderWidth = "3px";
+        }
+      };
+      const validateLName = (value) => {
+        const lNameRegex = /^[a-z0-9]+$/;
+        if (!lNameRegex.test(value)) {
+          document.getElementById("alert-lname").innerHTML =
+            "Last Name must be alphanumeric and contain 3-16 charecter";
+          document.getElementById("lname").style.outlineColor = "";
+          document.getElementById("lname").style.borderColor = "";
+          document.getElementById("lname").style.borderWidth = "";
+        } else if (value.length < 3 || value.length > 16) {
+          document.getElementById("alert-lname").innerHTML =
+            "Last Name must be alphanumeric and contain 3-16 charecter";
+          document.getElementById("lname").style.outlineColor = "";
+          document.getElementById("lname").style.borderColor = "";
+          document.getElementById("lname").style.borderWidth = "";
+        } else {
+          document.getElementById("alert-lname").innerHTML = "";
+          document.getElementById("lname").style.outlineColor = "green";
+          document.getElementById("lname").style.borderColor = "green";
+          document.getElementById("lname").style.borderWidth = "3px";
+        }
+      };
+      const validatePwd = (value) => {
+        const pwdRegex = /^[a-zA-Z0-9@-_ ]+$/;
+        if (!pwdRegex.test(value)) {
+          document.getElementById("alert-pwd").innerHTML =
+            "Password must be alphanumeric(@,_ and - are also allowed) and between 6-20 charecters";
+          document.getElementById("pwd").style.outlineColor = "";
+          document.getElementById("pwd").style.borderColor = "";
+          document.getElementById("pwd").style.borderWidth = "";
+        } else if (value.length < 6 || value.length > 20) {
+          document.getElementById("alert-pwd").innerHTML =
+            "Password must be alphanumeric(@,_ and - are also allowed) and between 6-20 charecters";
+          document.getElementById("pwd").style.outlineColor = "";
+          document.getElementById("pwd").style.borderColor = "";
+          document.getElementById("pwd").style.borderWidth = "";
+        } else {
+          document.getElementById("alert-pwd").innerHTML = "";
+          document.getElementById("pwd").style.outlineColor = "green";
+          document.getElementById("pwd").style.borderColor = "green";
+          document.getElementById("pwd").style.borderWidth = "3px";
+        }
+      };
+      const validateMail = (value) => {
+        const mailRegex = /^([\w]+)@([\w]+)+\.([\w]+)$/i;
+        if (!mailRegex.test(value)) {
+          document.getElementById("alert-mail").innerHTML =
+            "Email must be valid address e.g. example@example.com";
+          document.getElementById("mail").style.outlineColor = "";
+          document.getElementById("mail").style.borderColor = "";
+          document.getElementById("mail").style.borderWidth = "";
+        } else {
+          document.getElementById("alert-mail").innerHTML = "";
+          document.getElementById("mail").style.outlineColor = "green";
+          document.getElementById("mail").style.borderColor = "green";
+          document.getElementById("mail").style.borderWidth = "3px";
+        }
+      };
+      const validateTele = (value) => {
+        const teleRegex = /^[0-9]+$/;
+        if (!teleRegex.test(value)) {
+          document.getElementById("alert-tele").innerHTML =
+            "A valid Telephone number(11 digits and 333-333-3334";
+          document.getElementById("tele").style.outlineColor = "";
+          document.getElementById("tele").style.borderColor = "";
+          document.getElementById("tele").style.borderWidth = "";
+        } else if (value.length !== 11) {
+          document.getElementById("alert-tele").innerHTML =
+            "A valid Telephone number(11 digits and 333-333-3334";
+          document.getElementById("tele").style.outlineColor = "";
+          document.getElementById("tele").style.borderColor = "";
+          document.getElementById("tele").style.borderWidth = "";
+        } else {
+          document.getElementById("alert-tele").innerHTML = "";
+          document.getElementById("tele").style.outlineColor = "green";
+          document.getElementById("tele").style.borderColor = "green";
+          document.getElementById("tele").style.borderWidth = "3px";
+        }
+      };
+      const validateBio = (value) => {
+        const bioRegex = /^[a-z-_ ]+$/;
+        if (!bioRegex.test(value)) {
+          document.getElementById("alert-bio").innerHTML =
+            "Bio must contain only lowercase latters, underscore,hyphens, and be 8-50 charecters";
+          document.getElementById("bio").style.outlineColor = "";
+          document.getElementById("bio").style.borderColor = "";
+          document.getElementById("bio").style.borderWidth = "";
+        } else if (value.length < 8 || value.length > 50) {
+          document.getElementById("alert-bio").innerHTML =
+            "Bio must contain only lowercase latters, underscore,hyphens, and be 8-50 charecters";
+          document.getElementById("bio").style.outlineColor = "";
+          document.getElementById("bio").style.borderColor = "";
+          document.getElementById("bio").style.borderWidth = "";
+        } else {
+          document.getElementById("alert-bio").innerHTML = "";
+          document.getElementById("bio").style.outlineColor = "green";
+          document.getElementById("bio").style.borderColor = "green";
+          document.getElementById("bio").style.borderWidth = "3px";
+        }
+      };
+      function handleSubmit(event) {
+        event.preventDefault();
+      }
+    </script>
+  </body>
+</html>
